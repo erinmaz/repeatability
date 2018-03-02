@@ -1,6 +1,6 @@
 %function BH_HCanalysis_input(infile,endrow,thedir,HC1_starttime,HC2_starttime)
 function process_ET_data(infile,endrow,thedir,HC1_starttime,HC2_starttime)
-fixplot1('%9.1f');
+fixplot1('%9.1f'); % I'm not sure this is working properly, but I'm also not sure we need the resolution it gives us given the slow breath-by-breath and EPI data.
 cd(thedir);
 
 bh_dur = 304/60; %duration in min 
