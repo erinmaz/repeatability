@@ -1,13 +1,15 @@
 %function BH_HCanalysis_input(infile,endrow,thedir,HC1_starttime,HC2_starttime)
 function process_ET_data(infile,endrow,thedir,HC1_starttime,HC2_starttime)
+fixplot1('%9.1f');
 cd(thedir);
 
 bh_dur = 304/60; %duration in min 
 buffer=1000; %to avoid NaNs after resampling 
 respiract = dlmread(infile, '\t',[2,0,endrow,12]);
+
 figure
 plot(respiract(:,4))
-fixplot1('%9.1f');
+
 pts = input('Enter 1 x 2 matrix (start ind of bh1 and bh2): ');
 %manually read off graph and put in, based on paced breathing task (4 outs before first out and hold, go from expected out, 
 %plus two out on either side (so we're expecting bh1_3.txt to be the best model)
