@@ -219,6 +219,7 @@ plot(locs3,peaks3,'*');
 
 
 %%%%%%%%%%%%%%%%%%% HERE %%%%%%%%%%%
+%something wrong with R08 sess1 file?
 
 
 thedir='/Users/erin/Desktop/Projects/Repeatability/working/R08/sess1/respiract';
