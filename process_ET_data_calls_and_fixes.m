@@ -270,7 +270,8 @@ peaks3(badind)=[];
 plot(locs3,peaks3,'*');
 %HC2
 [peaks4,locs4]=findpeaks(hc2_CO2,'minpeakdistance',75,'minpeakheight',23, 'minpeakprominence',4);
-badind=find(locs4==3703);
+%badind=find(locs4==3703);
+badind=find(locs4==3702);
 locs4(badind)=[];
 peaks4(badind)=[];
 plot(locs4,peaks4,'*');
@@ -292,7 +293,8 @@ plot(locs2,peaks2,'*')
 %HC1
 [peaks3,locs3]=findpeaks(hc1_CO2,'minpeakdistance',75,'minpeakheight',37, 'minpeakprominence',4);
 plot(locs3,peaks3,'*');
-badind=find(locs3==3739);
+%badind=find(locs3==3739);
+badind=find(peaks3> 45);
 locs3(badind)=[];
 peaks3(badind)=[];
 plot(locs3,peaks3,'*');
@@ -340,8 +342,10 @@ HC2_starttime=46.740050;
 process_ET_data(infile,endrow,thedir,HC1_starttime,HC2_starttime);
 %Hypocapnic during BHs
 %BH1
-[peaks,locs]=findpeaks(bh1_CO2,'minpeakdistance',75,'minpeakheight',19,'minpeakprominence',7);
-plot(locs,peaks,'*')
+%[peaks,locs]=findpeaks(bh1_CO2,'minpeakdistance',75,'minpeakheight',19,'minpeakprominence',7);
+%plot(locs,peaks,'*')
+%BH1 looks OK now
+
 %BH2
 [peaks2,locs2]=findpeaks(bh2_CO2,'minpeakdistance',75,'minpeakheight',20.5, 'minpeakprominence',7);
 plot(locs2,peaks2,'*')
@@ -351,7 +355,8 @@ locs3(badind)=[];
 peaks3(badind)=[];
 plot(locs3,peaks3,'*');
 %HC2
-badind=[find(locs4==9106) find(locs4==3720)];
+%badind=[find(locs4==9106) find(locs4==3720)];
+badind=[find(peaks4>42) find(locs4==9105)];
 locs4(badind)=[];
 peaks4(badind)=[];
 plot(locs4,peaks4,'*');
@@ -379,7 +384,6 @@ plot(locs3,peaks3,'*');
 badind=[find(peaks4>48) find(peaks4<25)];
 locs4(badind)=[];
 peaks4(badind)=[];
-plot(locs4,peaks4,'*');
 plot(locs4,peaks4,'*');
 
 
