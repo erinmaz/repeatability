@@ -228,6 +228,8 @@ system('wc raw_R08_sess1.txt')
 endrow=109952;
 infile='raw_R08_sess1.txt';
 HC1_starttime=44.7711;	% Event file is wrong. This is best guess from CO2 trace. Seemed to screw things up to do it this way, ended up going through everything for HC runs in debug
+%Mar 6 2018. Cannot find HC1 starttime. It is off by 5.0000e-05. Edit
+%process_ET_data.m to deal with this
 HC2_starttime=59.567733;	
 process_ET_data(infile,endrow,thedir,HC1_starttime,HC2_starttime);
 %BH1 OK but messy

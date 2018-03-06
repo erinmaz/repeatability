@@ -149,8 +149,14 @@ save(bh2_output_file,'bh2_resampled_data','-ascii','-tabs');
 
 %%%%%%%%%%% HC RUNS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-HC1_startind = find(respiract(:,1) == HC1_starttime);
-HC2_startind = find(respiract(:,1) == HC2_starttime);
+%HC1_startind = find(respiract(:,1) == HC1_starttime);
+%HC2_startind = find(respiract(:,1) == HC2_starttime);
+
+indtmp=(respiract(:,1) - HC1_starttime) > 5e-5;
+HC1_startind = find(indtmp==1,1);
+indtmp=(respiract(:,1) - HC2_starttime) > 5e-5;
+HC2_startind = find(indtmp==1,1);
+
 hc_dur=360/60;
 
 HC1_endtime=HC1_starttime+hc_dur;
