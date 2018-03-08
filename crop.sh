@@ -34,6 +34,11 @@ done
 done
 done
 
+for file in `find $MAINDIR -name "*e*_cropped.nii.gz"`
+do 
+fslchfiletype NIFTI $file
+done
+
 
 
 
