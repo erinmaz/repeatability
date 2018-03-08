@@ -1,10 +1,13 @@
 %timing parameters in ms
+%system calls to fsl commands only work if Matlab is started from the
+%command line
 function run_asltbx(mydir, expression)
 
 Labeltime=1665;
 Delaytime=900;
 minTR=3900;
 TE=10;
+nslices=25;
 
 cd(mydir);
 inputdir = mydir;
@@ -42,11 +45,9 @@ resFlags = struct(...
 %grab file to realign with GUI
 %Select both the ASL data and the M0 data in order to register M0 data to ASL data
 %P = spm_select
-for j = 1:length(inputfiles),
+for j = 1:length(inputfiles)
     
     in = fullfile(inputdir,inputfiles(j).name);
-    [v,~] = spm_read_hdr(in);
-    nslices = v.dime.dim(4);
     spm_realign_asl(in, reaFlags);
     % Run reslice
     spm_reslice(in, resFlags);
