@@ -7,11 +7,16 @@ for r in R02 R03 R05 R06 R07 R08 R09 R10
 do 
 for s in sess1 sess2
 do 
-#crop HC and RS runs so they are the same length as the BH runs
+#crop HC and RS runs so they are the same length as the shortest BH runs
 for run in HC1_e1 HC1_e2 HC2_e1 HC2_e2 RS_e1 RS_e2
 do
-echo
 fslroi ${MAINDIR}/${r}/${s}/nii/${run} ${MAINDIR}/${r}/${s}/nii/${run}_cropped 13 76
+done
+
+#make sure all the BH runs are 76 volumes
+for run in BH1_e1 BH1_e2 BH2_e1 BH2_e2
+do
+fslroi ${MAINDIR}/${r}/${s}/nii/${run} ${MAINDIR}/${r}/${s}/nii/${run}_cropped 0 76
 done
 
 #crop ET data to match
