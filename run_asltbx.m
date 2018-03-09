@@ -46,7 +46,8 @@ resFlags = struct(...
 %Select both the ASL data and the M0 data in order to register M0 data to ASL data
 %P = spm_select
 for j = 1:length(inputfiles)
-    
+    diary(strcat(inputdir,'/',inputfiles(j).name,'.log'));
+    inputfiles(j).name
     in = fullfile(inputdir,inputfiles(j).name);
     spm_realign_asl(in, reaFlags);
     % Run reslice
@@ -92,6 +93,7 @@ for j = 1:length(inputfiles)
         M0roi = [];
         asl_perf_subtract(Filename,FirstimageType, SubtractionType, SubtractionOrder,Flag,Timeshift,AslType,labeff,MagType,Labeltime/1000, Delaytime/1000,Slicetime,TE,M0img,M0roi,maskimg)
     end
+    diary off;
 end
 
 

@@ -15,6 +15,7 @@ sessions = {
 for kk = 1:length(subjects)
     theSessions = sessions{kk};
     for jj = 1:length(theSessions)
+        
         run_asltbx(fullfile(analysis_dir,subjects{kk},theSessions{jj},'nii'),'*.nii');
     end
 end
