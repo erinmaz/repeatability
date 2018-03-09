@@ -24,8 +24,18 @@ for run in hc1_1 hc2_1
 do
 #get rid of spaces
 sed 's/ //g' ${MAINDIR}/${r}/${s}/respiract/${run}.txt > ${MAINDIR}/${r}/${s}/respiract/${run}_sed.txt
-#extract last 76 values
+#extract 76 values that correspond to fslroi command
 cut -f 14-89  ${MAINDIR}/${r}/${s}/respiract/${run}_sed.txt >  ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt 
+#scale such that min=0
+min=`awk '{m=$1;for(i=1;i<=NF;i++)if($i<m)m=$i;print m}' ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt`
+awk -v min=$min '{for(i=1;i<=NF;i++)print $i-min}' ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt > ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped_0.txt
+done
+
+for run in bh1_1 bh2_1
+do
+sed 's/ //g' ${MAINDIR}/${r}/${s}/respiract/${run}.txt > ${MAINDIR}/${r}/${s}/respiract/${run}_sed.txt
+#extract first 76 values
+cut -f 1-76  ${MAINDIR}/${r}/${s}/respiract/${run}_sed.txt >  ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt 
 #scale such that min=0
 min=`awk '{m=$1;for(i=1;i<=NF;i++)if($i<m)m=$i;print m}' ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt`
 awk -v min=$min '{for(i=1;i<=NF;i++)print $i-min}' ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped.txt > ${MAINDIR}/${r}/${s}/respiract/${run}_sed_cropped_0.txt
