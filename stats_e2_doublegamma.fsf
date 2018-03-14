@@ -298,7 +298,7 @@ set fmri(shape1) 2
 # 4 : Gamma basis functions
 # 5 : Sine basis functions
 # 6 : FIR basis functions
-set fmri(convolve1) 2
+set fmri(convolve1) 3
 
 # Convolve phase (EV 1)
 set fmri(convolve_phase1) 0
@@ -311,12 +311,6 @@ set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
 set fmri(custom1) "INPUT_ETCO2"
-
-# Gamma sigma (EV 1)
-set fmri(gammasigma1) 10
-
-# Gamma delay (EV 1)
-set fmri(gammadelay1) 14
 
 # Orthogonalise EV 1 wrt EV 0
 set fmri(ortho1.0) 0

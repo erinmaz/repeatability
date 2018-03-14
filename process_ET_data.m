@@ -30,8 +30,16 @@ hold
 [peaks,locs]=findpeaks(bh1_CO2,'minpeakdistance',75,'minpeakheight',23,'minpeakprominence',7);
 plot(locs,peaks,'*')
 %Breakpoint here, fix peaks before continuing
+figure
+hold
+bh1_resampled_data=zeros(16,76);
+for i=-8:7
+    index=i+9;
+    bh1_resampled_data(index,:)=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),i:4:300+i);
+    plot(bh1_resampled_data(index,:));
+end
 
-bh1_resampled_data=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),0:4:300);
+%bh1_resampled_data=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),0:4:300);
 %bh1_resampled_data2=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),4:4:304);
 %bh1_resampled_data3=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),8:4:308);
 %bh1_resampled_data4=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),12:4:312);
@@ -40,7 +48,8 @@ bh1_resampled_data=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),0:4:300);
 %bh1_resampled_data_minus3=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),-8:4:292);
 %bh1_resampled_data_minus4=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),-12:4:288);
 
-bh1_resampled_data=bh1_resampled_data-min(bh1_resampled_data);
+%Don't subtract min here, do this in analysis_step4_crop.sh
+%bh1_resampled_data=bh1_resampled_data-min(bh1_resampled_data);
 %bh1_resampled_data2=bh1_resampled_data2-min(bh1_resampled_data2);
 %bh1_resampled_data3=bh1_resampled_data3-min(bh1_resampled_data3);
 %bh1_resampled_data4=bh1_resampled_data4-min(bh1_resampled_data4);
@@ -56,7 +65,7 @@ plot(bh1_resampled_data);
 %plot(bh1_resampled_data3);
 %plot(bh1_resampled_data4);
 %plot(bh1_resampled_data_minus4);
-
+%plot(bh1_resampled_data_minus2);
 
 % bh1_output_file=sprintf('bh1_minus3.txt');
 % save(bh1_output_file,'bh1_resampled_data_minus3','-ascii','-tabs');
