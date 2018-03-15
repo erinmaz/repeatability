@@ -30,14 +30,7 @@ hold
 [peaks,locs]=findpeaks(bh1_CO2,'minpeakdistance',75,'minpeakheight',23,'minpeakprominence',7);
 plot(locs,peaks,'*')
 %Breakpoint here, fix peaks before continuing
-figure
-hold
-bh1_resampled_data=zeros(16,76);
-for i=-8:7
-    index=i+9;
-    bh1_resampled_data(index,:)=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),i:4:300+i);
-    plot(bh1_resampled_data(index,:));
-end
+
 
 %bh1_resampled_data=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),0:4:300);
 %bh1_resampled_data2=interp1(bh1_samptime_sec_zero(locs),bh1_CO2(locs),4:4:304);
