@@ -1,17 +1,32 @@
-#!/bin/bash
-NII=$1
-ETCO2=$2
-MASK=$3
-FEAT_TEMPLATE=$4
-OUTDIR=`dirname $NII`
-OUTFILE=`basename $NII .nii.gz`
-OUT=`echo $OUTDIR/${OUTFILE}.fsf`
+MAINDIR=/Users/erin/Desktop/Projects/Repeatability/working
 
-#fix TR (SPM seems to set it to 1)
-sed 's:INPUT_NII:'${NII}':g' ${FEAT_TEMPLATE} > ${OUT}.tmp
-sed 's:INPUT_ETCO2:'${ETCO2}':g' ${OUT}.tmp > ${OUT}.tmp2
-sed 's:INPUT_MASK:'${MASK}':g' ${OUT}.tmp2 > ${OUT}
-rm ${OUT}.tmp
-rm ${OUT}.tmp2
+for run in BH2 HC1 HC2 RS
+do
+fslmaths /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped -nan /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan
+sed 's/BH1/'${run}'/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e2_cropped_nan_reg.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan_reg.fsf
+feat /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan_reg.fsf 
+done
+#above this copied into terminal
 
-feat ${OUT}
+
+for run in BH1 BH2 HC1 HC2 RS
+do
+fslmaths /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/r${run}_e2_cropped -nan /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/r${run}_e2_cropped_nan
+sed 's/sess1/sess2/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan_reg.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/r${run}_e2_cropped_nan_reg.fsf
+feat /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/r${run}_e2_cropped_nan_reg.fsf 
+done
+
+for r in R03 R05 R06 R07 R08 R09 R10
+do
+for sess in sess1 sess2
+do
+for run in BH1 BH2 HC1 HC2 RS
+do
+fslmaths /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped -nan /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan
+
+sed 's/R02/'${r}'/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/${sess}/nii/r${run}_e2_cropped_nan_reg.feat/design.fsf > Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan_reg.fsf
+feat Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_1000cropped_nan_reg.fsf
+
+done
+done 
+done
