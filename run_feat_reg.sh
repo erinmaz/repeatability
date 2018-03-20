@@ -6,7 +6,7 @@ fslmaths /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run
 sed 's/BH1/'${run}'/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e2_cropped_nan_reg.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan_reg.fsf
 feat /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/r${run}_e2_cropped_nan_reg.fsf 
 done
-#above this copied into terminal
+
 
 
 for run in BH1 BH2 HC1 HC2 RS
@@ -24,9 +24,10 @@ for run in BH1 BH2 HC1 HC2 RS
 do
 fslmaths /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped -nan /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan
 
-sed 's/R02/'${r}'/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/${sess}/nii/r${run}_e2_cropped_nan_reg.feat/design.fsf > Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan_reg.fsf
-feat Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_1000cropped_nan_reg.fsf
+sed 's/R02/'${r}'/g' /Users/erin/Desktop/Projects/Repeatability/working/R02/${sess}/nii/r${run}_e2_cropped_nan_reg.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan_reg.fsf
+feat /Users/erin/Desktop/Projects/Repeatability/working/${r}/${sess}/nii/r${run}_e2_cropped_nan_reg.fsf &
 
 done
 done 
+wait
 done
