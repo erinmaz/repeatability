@@ -1,0 +1,6 @@
+for f in `ls -d srBH1*.feat/thresh_zstat1.nii.gz`
+do 
+echo $f
+done
+
+fslmerge -t BH1_e2_movie_neg `ls -d srBH1*.feat/thresh_zstat2.nii.gz`
