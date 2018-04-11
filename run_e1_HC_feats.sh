@@ -1,7 +1,4 @@
 #!/bin/bash
-
-
-
 for sub in R03 R05 R06 R07 R08 R09 R10
 do
 
@@ -37,8 +34,7 @@ for sess in sess1 sess2
 do
 for run in HC1 HC2
 do
-sed 's:R02:'${sub}':g' /Users/erin/Desktop/Projects/Repeatability/working/R02/${sess}/nii/sr${run}_e1_cropped_sub_block_gamma15_30.feat/design.fsf > 
-/Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e1_cropped_sub_block_gamma15_30.fsf
+sed 's:R02:'${sub}':g' /Users/erin/Desktop/Projects/Repeatability/working/R02/${sess}/nii/sr${run}_e1_cropped_sub_block_gamma15_30.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e1_cropped_sub_block_gamma15_30.fsf
 feat /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e1_cropped_sub_block_gamma15_30.fsf &
 done
 done
