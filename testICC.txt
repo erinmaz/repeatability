@@ -1,0 +1,9 @@
+cd /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii
+applywarp -i meanCBF_2_srRS_e1_cropped -w rRS_e2_cropped_nan_reg.feat/reg/example_func2standard_warp -r rRS_e2_cropped_nan_reg.feat/reg/standard -o meanCBF_2_srRS_e1_cropped_to_standard
+fslchfiletype ANALYZE meanCBF_2_srRS_e1_cropped_to_standard
+cd /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii
+applywarp -i meanCBF_2_srRS_e1_cropped -w rRS_e2_cropped_nan_reg.feat/reg/example_func2standard_warp -r rRS_e2_cropped_nan_reg.feat/reg/standard -o meanCBF_2_srRS_e1_cropped_to_standard
+fslchfiletype ANALYZE meanCBF_2_srRS_e1_cropped_to_standard
+cd ..
+applywarp -i c1T1.8 -r nii/rRS_e2_cropped_nan_reg.feat/reg/standard -w nii/rRS_e2_cropped_nan_reg.feat/reg/highres2standard_warp -o c1T1.8_to_standard --interp=nn
+fslchfiletype ANALYZE c1T1.8_to_standard

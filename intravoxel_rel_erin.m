@@ -61,7 +61,7 @@ numsubplots=ceil(sqrt(nsub));
 
 for cluster=1:size(cluster_mask_files,1); % run over clusters
 
-    figure;
+    fig1=figure;
     %title(['cluster', num2str(cluster)])
     set(gcf, 'color', 'white');
     
@@ -131,7 +131,7 @@ StErr= std(md);
 R=[Nv];
 E=StErr;
 tt=1:length(R);
-figure; 
+fig2=figure; 
 set(gcf, 'color', 'white');
 bar(tt,R,'r')
 colormap summer
@@ -168,3 +168,4 @@ v_cv=cv
 fprintf('\n')
 fprintf('Medians with standard errors of ROI-ICCs across the population: \n')
 ROI_vICC_2A_con
+
