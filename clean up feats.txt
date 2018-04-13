@@ -1,0 +1,2 @@
+cd /Users/erin/Desktop/Projects/Repeatability/working
+find . -name "filtered_func_data.nii.gz" -not -path "*01*" -delete
