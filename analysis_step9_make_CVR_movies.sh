@@ -15,16 +15,16 @@ for f in `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess
 do
 fslmaths ${f}/stats/cope1_psc -mas ${f}/thresh_zstat1 ${f}/stats/cope1_psc_sig
 done
-fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e1_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e1_cropped_sub_bptf_*_${hrf}.feat/stats/cope1_psc_sig.nii.gz` &
-fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e2_cropped_*_${hrf}.feat/stats/cope1_psc_sig.nii.gz`  &
-fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e2_cropped_*_${hrf}.feat/thresh_zstat1.nii.gz`
-fslmaths  /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_movie -Tmax -bin /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_mask
+fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e1_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e1_cropped_sub_bptf_*_${hrf}.feat/stats/cope1_psc_sig.nii.gz` 
+fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e2_cropped_*_${hrf}.feat/stats/cope1_psc_sig.nii.gz` 
+#fslmerge -t /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_movie `ls -d /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/sr${run}_e2_cropped_*_${hrf}.feat/thresh_zstat1.nii.gz`
+#fslmaths  /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_movie -Tmax -bin /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_thresh_zstat1_e2_mask
 fslchfiletype NIFTI /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e1_movie
 fslchfiletype NIFTI /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie
-fslroi /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_sig_e2_movie /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie_cropped 10 16
+fslroi /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e2_movie_cropped 10 16
+fslroi /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e1_movie  /Users/erin/Desktop/Projects/Repeatability/working/${sub}/${sess}/nii/${run}_${hrf}_CVR_sig_e1_movie_cropped 10 16
 done
 done
-wait
 done
 done
 #matlab stuff
