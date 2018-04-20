@@ -54,7 +54,8 @@ end
 %    activation_files=strvcat(activation_files,[sd '/' f '.img']);       
 %end; 
 
-nsub=size(activation_files,1)/2;
+%nsub=size(activation_files,1)/2;
+nsub=length(activation_files{1})/2;
 numsubplots=ceil(sqrt(nsub));
 
 %for each cluster extract the values in each activation map
@@ -69,12 +70,12 @@ for cluster=1:size(cluster_mask_files,1); % run over clusters
     
     net=[cluster_mask_files(cluster,:)];
 
-    for subject=1:size(activation_files,1)/2; % run first session 
-
-        act=[activation_files(subject,:)] %x axis for the 1st session
-        res=[activation_files(subject+size(activation_files,1)/2,:)] %y axis for the 2nd
-
-        
+    %for subject=1:size(activation_files,1)/2; % run first session 
+    for subject=1:length(activation_files{1})/2;
+     %   act=[activation_files(subject,:)] %x axis for the 1st session
+     %   res=[activation_files(subject+size(activation_files,1)/2,:)] %y axis for the 2nd
+        act=[activation_files{1}{subject}]
+        res=[activation_files{1}{subject+nsub}]
         %use network to extract the sesssion 1 Vs session 2 in the cluster
         %mask
         [datreg, datregn, datregnn] = ICC_network(th,net, act, res);
@@ -147,6 +148,7 @@ for cluster=1:num_clusters;
     xt{cluster}= ['cluster_' st];
 end
 set(gca,'XTickLabel',xt);
+
     
 ROI_vICC_2A_con={};
     
