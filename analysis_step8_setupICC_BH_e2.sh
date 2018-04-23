@@ -8,8 +8,9 @@ for sess in sess1 sess2
 do
 for sub in R02 R03 R05 R06 R07 R08 R09 R10
 do
-applywarp -i ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1 -w ${MAINDIR}/${sub}/${sess}/nii/${reg} -r ${MAINDIR}/${sub}/${sess}/nii/${ref} -o ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard
-fslchfiletype NIFTI ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard
+rm ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard.nii.gz
+#applywarp -i ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1 -w ${MAINDIR}/${sub}/${sess}/nii/${reg} -r ${MAINDIR}/${sub}/${sess}/nii/${ref} -o ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard
+#fslchfiletype NIFTI ${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard
 echo \'${MAINDIR}/${sub}/${sess}/nii/srBH1_e2_cropped_${run[$i]}.feat/thresh_zstat1_to_standard.nii\'
 let i=$i+1
 done

@@ -1,0 +1,3 @@
+ cd /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii
+cp -r rBH1_e2_cropped_nan_reg.feat/reg /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/srBH1_e1_cropped_sub_bptf_bh1_01_gamma15_30.feat/.
+cp -r rBH2_e2_cropped_nan_reg.feat/reg /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/srBH2_e1_cropped_sub_bptf_bh2_01_gamma15_30.feat/.
