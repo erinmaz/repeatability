@@ -67,7 +67,7 @@ for cluster=1:size(cluster_mask_files,1) % run over clusters
     set(gcf, 'color', 'white');
     
     th=0; %mask threshold
-    datathr=0; %erin added
+    %datathr=0; %erin added
     
     net=[cluster_mask_files(cluster,:)];
     
@@ -85,17 +85,21 @@ for cluster=1:size(cluster_mask_files,1) % run over clusters
         D2=datregn(:,2); %session 2
         
         
-        D1index=find(D1>datathr);
-        D2index=find(D2>datathr);
-        index=intersect(D1index,D2index);
-       
-%        D1=D1(D2~=0); % is this a typo, should it be where D1~=0? i guess it should be where both are not =0 so we are testing on the same voxels
-%        D2=D2(D2~=0);
-D1=D1(index);
-D2=D2(index);
+%         D1index=find(D1>datathr);
+%         D2index=find(D2>datathr);
+%         index=intersect(D1index,D2index);
+%         D1=D1(index);
+%         D2=D2(index);
+       D1=D1(D2~=0); % is this a typo, should it be where D1~=0? i guess it should be where both are not =0 so we are testing on the same voxels. This is already taken care of in ICC_network.ß
+       D2=D2(D2~=0);
+
         Y = [D1; D2];
-  %      [h1,p1]=kstest(D1)
-  %      [h2,p2]=kstest(D2)
+%         [h1,p1]=kstest(D1)
+%         [h2,p2]=kstest(D2)
+%         fig2=figure
+%         histogram(D1)
+%         hold
+%         histogram(D2)
   %      [rho,pval]=corr(D1,D2);
         numvoxels(cluster,subject)=length(D1);
         %calculates the ICC for a concatenated set of values in Y (test-retest)
@@ -106,6 +110,7 @@ D2=D2(index);
         stricc_2A_con=num2str(ICC_2A_con(cluster,subject),'%5.2f'); %ICC(3,1) obtained form BMS/EMS
         strcv=num2str(cv(cluster,subject),'%5.2f');
         
+      
         subplot(numsubplots,numsubplots,subject,'align');
         plot(D1,D2,'.') 
         axis equal
@@ -116,9 +121,9 @@ D2=D2(index);
         axis([minr maxr minr maxr]);
         xlabel('sess 1'); ylabel('sess 2');
         title({['ICC=' stricc_2A_con]});
-        
-        fprintf('...done subject.')
-        fprintf('%5.1f \n', subject)
+%         
+%         fprintf('...done subject.')
+%         fprintf('%5.1f \n', subject)
     end;
     
 end;

@@ -1,11 +1,14 @@
 
+myfileid=fopen('/Users/erin/Desktop/Projects/Repeatability/working/ICC_input/bs_BH1_e1_gamma3_6_mip.txt')
+
+
 files=dir('/Users/erin/Desktop/Projects/Repeatability/working/ICC_input/*.txt');
 %files=dir('/Users/erin/Desktop/Projects/Repeatability/working/ICC_input/*less_than*.txt');
 output='/Users/erin/Desktop/Projects/Repeatability/working/ICC_output/outputtable.txt';
 outputmat='/Users/erin/Desktop/Projects/Repeatability/working/ICC_output/workspace.mat';
 for i=1:length(files)
     %for i=1:4
-    myfileid=fopen(files(i).name);
+    myfileid=fopen(fullfile(files(i).folder,files(i).name));
     data=textscan(myfileid,'%s');
     [ROI_vICC_2A_con{i} v_ICC_2A_con{i} v_cv{i} v_numvoxels{i}] = intravoxel_rel_erin('/Users/erin/Desktop/Projects/Repeatability/ROIs/ROIs_used.nii','y',data);
     fclose(myfileid)
