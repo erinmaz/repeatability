@@ -1,15 +1,15 @@
 cd /Users/erin/Desktop/Projects/Repeatability/working/ICC_input_RS_CBF
 %mkdir output
 
-%myfile='meanCBF_2_srRS_e1_cropped_nn.txt';
+myfile='meanCBF_2_srRS_e1_cropped_nn.txt';
 %myfile='meanCBF_2_srRS_e1_cropped.txt';
 %myfile='meanCBF_2_srRS_e1_cropped_thr_nn.txt';
-myfile='rRS_e1_cropped_nan_feat_copes_nn.txt';
+%myfile='rRS_e1_cropped_nan_feat_copes_nn.txt';
 %myfile='meanCBF_2_srRS_e1_cropped_statsthresh_nn.txt';
 %myfile='meanCBF_2_srRS_e1_cropped_statsthresh_thr_nn.txt';
 
-%mask='/Users/erin/Desktop/Projects/Repeatability/ROIs/MNI152_T1_2mm_brain_mask.nii';
-mask='/Users/erin/Desktop/Projects/Repeatability/ROIs/ROIs_used.nii';
+mask='/Users/erin/Desktop/Projects/Repeatability/ROIs/MNI152_T1_2mm_brain_mask.nii';
+%mask='/Users/erin/Desktop/Projects/Repeatability/ROIs/ROIs_used.nii';
 
 [~,myfilename,~]=fileparts(myfile);
 [~,maskname,~]=fileparts(mask);
