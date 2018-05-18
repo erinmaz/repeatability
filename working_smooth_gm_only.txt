@@ -1,0 +1,18 @@
+#already created in analysis_gm_mask_2_func_space.sh
+
+for f in BH1 HC1 BH2 HC2 RS
+do
+fslmaths r${f}_e1_cropped -nan -mas c1T1.8_to_${f} r${f}_e1_cropped_gm
+fslmaths r${f}_e1_cropped_gm -kernel gauss 5 -fmedian r${f}_e1_cropped_gm_gauss5_fmedian
+perfusion_subtract r${f}_e1_cropped_gm_gauss5_fmedian r${f}_e1_cropped_gm_gauss5_fmedian_sub -m
+fslmaths r${f}_e1_cropped_gm_gauss5_fmedian_sub -bptf -1 2 r${f}_e1_cropped_gm_gauss5_fmedian_sub_bptf
+done
+for f in BH1 HC1 BH2 HC2
+do
+fslmaths r${f}_e2_cropped -nan -mas c1T1.5_to_${f} r${f}_e2_cropped_gm0.5
+fslmaths r${f}_e2_cropped_gm0.5 -kernel gauss 5 -fmedian r${f}_e2_cropped_gm0.5_gauss5_fmedian
+fslmaths r${f}_e2_cropped_gm0.5_gauss5_fmedian -binv  r${f}_e2_cropped_gm0.5_gauss5_fmedian_binv
+fslmaths r${f}_e2_cropped -mas r${f}_e2_cropped_gm0.5_gauss5_fmedian_binv r${f}_e2_cropped_remainder
+fslmaths r${f}_e2_cropped_gm0.5_gauss5_fmedian -add r${f}_e2_cropped_remainder -nan r${f}_e2_cropped_gm0.5_gauss5_fmedian_whole
+
+done
