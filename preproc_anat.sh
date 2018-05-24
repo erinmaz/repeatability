@@ -16,3 +16,5 @@ fslchfiletype NIFTI_GZ ${T1DIR}/mT1
 fslmaths ${T1DIR}/c1T1 -add ${T1DIR}/c2T1 -add ${T1DIR}/c3T1 -bin -fillh ${T1DIR}/spm_mask
 fslmaths ${T1DIR}/T1 -mas ${T1DIR}/spm_mask ${T1DIR}/T1_brain
 fsleyes ${T1DIR}/T1 ${T1DIR}/spm_mask &
+
+fslmaths ${T1DIR}/c1T1 -thr 0.5 -bin ${T1DIR}/spm_gm_mask
