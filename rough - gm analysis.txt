@@ -1,9 +1,0 @@
-Erins-MacBook-Pro:~ erin$ cd /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii 
-Erins-MacBook-Pro:nii erin$ fslmaths rRS_e1_cropped -mas c1T1.8_to_RS.nii.gz rRS_e1_cropped_gm
-Erins-MacBook-Pro:nii erin$ fsleyes rRS_e1_cropped_gm
-
- fslmaths /Users/erin/Desktop/Projects/MRGFUS/scripts/rois_standardspace/harvardoxford-subcortical_prob_Left_Cerebral_Cortex_thr2.nii.gz -add /Users/erin/Desktop/Projects/MRGFUS/scripts/rois_standardspace/harvardoxford-subcortical_prob_Right_Cerebral_Cortex_thr2.nii.gz -bin /Users/erin/Desktop/Projects/Repeatability/ROIs/harvardoxford-subcortical_CerebralCortex 
-Erins-MacBook-Pro:nii erin$ fsleyes /Users/erin/Desktop/Projects/Repeatability/ROIs/harvardoxford-subcortical_CerebralCortex.nii.gz 
-
-applyxfm -i /Users/erin/Desktop/Projects/Repeatability/ROIs/harvardoxford-subcortical_CerebralCortex.nii.gz 
--r 
