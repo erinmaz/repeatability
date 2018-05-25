@@ -90,7 +90,7 @@ for cluster=1:size(cluster_mask_files,1) % run over clusters
 %         index=intersect(D1index,D2index);
 %         D1=D1(index);
 %         D2=D2(index);
-       D1=D1(D2~=0); % is this a typo, should it be where D1~=0? i guess it should be where both are not =0 so we are testing on the same voxels. This is already taken care of in ICC_network.ß
+       D1=D1(D2~=0); % is this a typo, should it be where D1~=0? i guess it should be where both are not =0 so we are testing on the same voxels. This is already taken care of in ICC_network.
        D2=D2(D2~=0);
 
         Y = [D1; D2];

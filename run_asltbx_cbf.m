@@ -1,7 +1,7 @@
 %timing parameters in ms
 %system calls to fsl commands only work if Matlab is started from the
 %command line
-function run_asltbx(mydir, expression)
+function run_asltbx_cbf(mydir, expression)
 cd(mydir);
 inputdir = mydir;
 inputfiles = expression;
@@ -21,19 +21,19 @@ defaults = spm('Defaults','fmri');
 %%%%%%%%%%%%%%%%%%%
 %%PERFUSION CALC
 %%%%%%%%%%%%%%%%%%%
-Filename = fullfile(inputdir,inputfiles);
-M0img = [];
-maskimg=[];
-FirstimageType = 1;
-SubtractionType = 2; %sinc subtraction
-SubtractionOrder = 0;
-Flag = [1 1 1 0 1 1 0 1 1]; % [MaskFlag,MeanFlag,CBFFlag,BOLDFlag,OutPerfFlag,OutCBFFlag,QuantFlag,ImgFormatFlag,D4Flag]
-Timeshift = 0.5; %for sinc subtraction only
-AslType = 1; % 1 = CASL
-labeff = 0.85; %0.85 for pCASL, same in Yuhan's script - this should be measured for onsite scanner - has it?
-MagType = 1; %1 for 3 T
-Slicetime = (minTR - Labeltime - Delaytime)/nslices;
-M0roi = [];
+Filename = fullfile(inputdir,inputfiles)
+M0img = []
+maskimg=[]
+FirstimageType = 1
+SubtractionType = 2 %sinc subtraction
+SubtractionOrder = 0
+Flag = [1 1 1 0 1 1 0 1 1] % [MaskFlag,MeanFlag,CBFFlag,BOLDFlag,OutPerfFlag,OutCBFFlag,QuantFlag,ImgFormatFlag,D4Flag]
+Timeshift = 0.5 %for sinc subtraction only
+AslType = 1 % 1 = CASL
+labeff = 0.85 %0.85 for pCASL, same in Yuhan's script - this should be measured for onsite scanner - has it?
+MagType = 1 %1 for 3 T
+Slicetime = (minTR - Labeltime - Delaytime)/nslices
+M0roi = []
 asl_perf_subtract(Filename,FirstimageType, SubtractionType, SubtractionOrder,Flag,Timeshift,AslType,labeff,MagType,Labeltime/1000, Delaytime/1000,Slicetime,TE,M0img,M0roi,maskimg)
 diary off;
 %tested for R02 sess1, CBF seems way too high! ARGH
