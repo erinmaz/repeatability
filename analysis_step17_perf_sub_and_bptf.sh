@@ -9,7 +9,8 @@ do
 for run in BH1 BH2 HC1 HC2
 do
 perfusion_subtract ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm_sub -m
-fslmaths ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm_sub -bptf -1 2 ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm_sub_bptf
+fslmaths ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm_sub -mas ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm.feat/stats/thresh_1_minus_p1 -bptf -1 2 ${MAINDIR}/${r}/${sess}/nii/r${run}_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf
 done
 done
 done
+
