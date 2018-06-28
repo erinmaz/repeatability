@@ -105,9 +105,6 @@ wait
 done
 done
 
-
-#HERE (but need to run FDR on e2 feats run above. Maybe I should re run everything just in case? I don't know what happened to step 18)
-
 run=bh1_09 #feat run manually
 
 film_gls --in=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf --rn=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr --pd=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.mat --con=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.con 
@@ -123,8 +120,6 @@ feat /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cr
   film_gls --in=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf --rn=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr --pd=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.mat --con=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.con 
   fdr_cor.sh /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr $q $e1dof
 done
-
-#HERE
 
 cp /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_bh1_09.feat/design.fsf /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_bh1_09.fsf
 
@@ -148,7 +143,6 @@ do
   fdr_cor.sh /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr $q $e1dof
 done
 
-
 for run in bh2_09 bh2_10 bh2_11 bh2_12 bh2_13 bh2_14 bh2_15 bh2_16 bh2_17 bh2_18 bh2_19 bh2_20 
 do
   sed 's:sess1:sess2:g' /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.fsf > /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.fsf
@@ -156,7 +150,7 @@ feat /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cr
   film_gls --in=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf --rn=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr --pd=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.mat --con=/Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/design.con 
   fdr_cor.sh /Users/erin/Desktop/Projects/Repeatability/working/R02/sess2/nii/rBH2_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_${run}.feat/stats_rawfile_nothr $q $e1dof
 done
-
+#HERE 
 sed 's:BH1:HC1:g' /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rBH1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_bh1_09.feat/design.fsf > /Users/erin/Desktop/Projects/Repeatability/working/R02/sess1/nii/rHC1_e1_cropped_nan_gm_sm_sub_clt-tagmask_bptf_bh1_09.fsf
 
 for run in hc1_09 hc1_10 hc1_11 hc1_12 hc1_13 hc1_14 hc1_15 hc1_16 hc1_17 hc1_18 hc1_19 hc1_20 
