@@ -50,3 +50,14 @@ done
 done
 done
 
+for f in `find ${MAINDIR} -name "*movie*"`
+do
+  fslchfiletype NIFTI $f
+done
+
+for f in `find ${MAINDIR} -name "*movie*"`
+do
+  echo $f
+done
+
+#input these into analysis_step22_delay_wrapper.m
