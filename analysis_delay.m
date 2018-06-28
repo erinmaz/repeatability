@@ -4,6 +4,8 @@ function analysis_delay(moviefile)
 [moviedir,moviename,movieext]=fileparts(moviefile);
 movie=niftiread(moviefile);
 [mip,delay]=max(movie,[],4);
+zeroinds=find(mip==0);
+delay(zeroinds)=0;
 niftiwrite(mip,fullfile(moviedir,[moviename '_mip' movieext]));
 niftiwrite(delay,fullfile(moviedir,[moviename '_delay' movieext]));
 end
