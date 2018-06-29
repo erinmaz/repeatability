@@ -23,7 +23,9 @@ do
   
   featdir_e1=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e1*.feat_maxextent`
   applywarp -i ${featdir_e1}/stats_rawfile_nothr/cope1_psc -w ${regdir}/example_func2standard_warp -r ${regdir}/standard --interp=nn -o ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard
-  echo ${featdir_e1}/stats/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e1_maxextent.txt
+  fslchfiletype NIFTI ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard
+  echo ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e1_maxextent.txt
+  
   
 done #sub
 done #sess

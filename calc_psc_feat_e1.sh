@@ -8,5 +8,5 @@
 
 avgReg=`awk 'NR == 6 || $1 < min { line = $0; min = $1}; END {print -line}' ${1}/design.mat`
 
-fslmaths ${1}/stats_rawfile_nothr/cope1 -mul $avgReg -mul -1 -add ${1}/mean_func ${1}/stats_rawfile_nothr/cope1_baseline
+fslmaths ${1}/stats_rawfile_nothr/cope1 -mul $avgReg -mul -1 -add ${2} ${1}/stats_rawfile_nothr/cope1_baseline
 fslmaths ${1}/stats_rawfile_nothr/cope1 -div ${1}/stats_rawfile_nothr/cope1_baseline ${1}/stats_rawfile_nothr/cope1_psc
