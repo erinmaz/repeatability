@@ -20,12 +20,18 @@ do
   applywarp -i ${featdir_e2}/stats/cope1_psc -w ${regdir}/example_func2standard_warp -r ${regdir}/standard --interp=nn -o ${featdir_e2}/stats/cope1_psc_to_standard
   fslchfiletype NIFTI ${featdir_e2}/stats/cope1_psc_to_standard
   echo ${featdir_e2}/stats/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e2_maxextent.txt
-  
+   applywarp -i ${featdir_e2}/stats/cope1_psc_statsthresh -w ${regdir}/example_func2standard_warp -r ${regdir}/standard --interp=nn -o ${featdir_e2}/stats/cope1_psc_statsthresh_to_standard
+  fslchfiletype NIFTI ${featdir_e2}/stats/cope1_psc_statsthresh_to_standard
+   echo ${featdir_e2}/stats/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e2_statsthresh_maxextent.txt
+   
   featdir_e1=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e1*.feat_maxextent`
   applywarp -i ${featdir_e1}/stats_rawfile_nothr/cope1_psc -w ${regdir}/example_func2standard_warp -r ${regdir}/standard --interp=nn -o ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard
   fslchfiletype NIFTI ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard
   echo ${featdir_e1}/stats_rawfile_nothr/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e1_maxextent.txt
   
+  applywarp -i ${featdir_e1}/stats_rawfile_nothr/cope1_psc_statsthresh -w ${regdir}/example_func2standard_warp -r ${regdir}/standard --interp=nn -o ${featdir_e1}/stats_rawfile_nothr/cope1_psc_statsthresh_to_standard
+  fslchfiletype NIFTI ${featdir_e1}/stats_rawfile_nothr/cope1_psc_statsthresh_to_standard
+  echo ${featdir_e1}/stats_rawfile_nothr/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_INPUT/bs_${run}_e1_statsthresh_maxextent.txt
   
 done #sub
 done #sess
@@ -40,10 +46,10 @@ for sub in R02 R03 R05 R06 R07 R08 R09 R10
 do
   featdir_e2=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e2*.feat_maxextent`
   echo ${featdir_e2}/stats/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_HC_e2_max_extent.txt
-  
+  echo ${featdir_e2}/stats/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_HC_e2_statsthresh_max_extent.txt
   featdir_e1=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e1*.feat_maxextent`
   echo ${featdir_e2}/stats_rawfile_nothr/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_HC_e1_max_extent.txt
-  
+  echo ${featdir_e2}/stats_rawfile_nothr/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_HC_e1_statsthresh_max_extent.txt
 done #sub
 done #run
 done #sess
@@ -54,11 +60,13 @@ for run in BH1 BH2
 do
 for sub in R02 R03 R05 R06 R07 R08 R09 R10
 do
-   featdir_e2=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e2*.feat_maxextent`
+  featdir_e2=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e2*.feat_maxextent`
   echo ${featdir_e2}/stats/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_BH_e2_max_extent.txt
-  
+  echo ${featdir_e2}/stats/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_BH_e2_statsthresh_max_extent.txt
   featdir_e1=`ls -d ${MAINDIR}/${sub}/${sess}/nii/r${run}*e1*.feat_maxextent`
   echo ${featdir_e2}/stats_rawfile_nothr/cope1_psc_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_BH_e1_max_extent.txt
+  echo ${featdir_e2}/stats_rawfile_nothr/cope1_psc_statsthresh_to_standard.nii >> ${MAINDIR}/ICC_input/ws_${sess}_BH_e1_statsthresh_max_extent.txt
 done #sub
 done #run
 done #sess
+ 

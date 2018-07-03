@@ -112,7 +112,9 @@ for cluster=1:size(cluster_mask_files,1) % run over clusters
         
       
         subplot(numsubplots,numsubplots,subject,'align');
-        plot(D1,D2,'.') 
+       plot(D1,D2,'.') 
+      % scatplot(D1,D2,'circles');
+      %heatscatter(D1,D2,'~/Desktop/','test.pdf')
         axis equal
         xrange = quantile(D1,[.00005 .99995]);
         yrange = quantile(D2,[.00005 .99995]);
